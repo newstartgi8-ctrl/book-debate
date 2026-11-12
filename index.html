@@ -1,0 +1,520 @@
+<!doctype html>
+<html lang="ko" data-deck="science-concert-debate-1">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>사제 동행 독서 토론 · 정재승의 과학 콘서트</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/N-lifescience/resonance@2/engine/exploragram.css">
+<script defer src="https://cdn.jsdelivr.net/gh/N-lifescience/resonance@2/engine/exploragram.js"></script>
+<style>
+/* 콘서트 무대: 남색 머리 띠 + 금빛 배지 */
+body[data-theme="ppt"] { --accent: #A0461E; --tab: #1E2B4F; --tab-ink: #FFFFFF; --gold: #E9B949; --ink: #1F2328; --mute: #5B6270; --soft: #F3EFE6; --teal: #1E6F5C; --red: #B3261E; }
+body[data-theme="ppt"] section.slide {
+  background:
+    linear-gradient(var(--gold), var(--gold)) 0 100px / 100% 6px no-repeat,
+    linear-gradient(var(--tab), var(--tab)) 0 0 / 100% 100px no-repeat,
+    #FFFFFF;
+  color: var(--ink);
+}
+body[data-theme="ppt"] section.slide[data-sec]::before {
+  left: auto; right: 42px; top: 26px; height: 50px; line-height: 50px; min-width: 160px;
+  padding: 0 26px; box-sizing: border-box; display: flex; align-items: center; justify-content: center;
+  border-radius: 25px; background: var(--gold); color: var(--tab); font-size: 26px; font-weight: 800;
+}
+body[data-theme="ppt"] section.slide > h2:first-child {
+  position: absolute; top: 0; left: 60px; right: 260px; height: 100px; margin: 0; padding: 0;
+  display: flex; align-items: center; color: #FFFFFF; font-size: 40px; border: 0; background: none; width: auto;
+}
+
+/* 표지·장 표지 */
+body[data-theme="ppt"] section.slide.cover, body[data-theme="ppt"] section.slide.part { background: var(--tab); color: #FFFFFF; }
+body[data-theme="ppt"] section.slide.cover::before, body[data-theme="ppt"] section.slide.part::before { display: none; }
+body[data-theme="ppt"] section.slide.cover::after, body[data-theme="ppt"] section.slide.part::after { color: #FFFFFF; }
+.cv { margin-top: 60px; padding: 6px 0 10px 44px; border-left: 16px solid var(--gold); }
+.cv p { margin: 0; color: #FFFFFF; }
+.cv .cv-k { font-size: 30px; color: var(--gold); font-weight: 700; }
+.cv h1 { margin: 24px 0 26px; font-size: 66px; line-height: 1.2; color: #FFFFFF; }
+.cv .cv-s { font-size: 34px; line-height: 1.5; }
+.staff { margin-top: 56px; display: flex; gap: 14px; }
+.staff span { flex: 1; height: 8px; border-radius: 4px; background: rgba(255,255,255,.18); }
+.staff span:nth-child(2n) { background: rgba(233,185,73,.55); }
+
+/* 공통 */
+.lead { font-size: 30px; line-height: 1.5; margin: 6px 0 22px; }
+.key { color: var(--accent); font-weight: 800; }
+.aside { color: var(--mute); font-size: 24px; line-height: 1.45; }
+.two { display: grid; grid-template-columns: 1fr 470px; gap: 40px; align-items: start; }
+
+/* 오늘의 흐름 */
+.tl { display: flex; height: 120px; border-radius: 14px; overflow: hidden; margin: 10px 0 30px; }
+.tl div { display: flex; flex-direction: column; justify-content: center; padding: 0 16px; color: #FFFFFF; font-size: 24px; line-height: 1.3; border-right: 3px solid #FFFFFF; box-sizing: border-box; }
+.tl div:last-child { border-right: 0; }
+.tl b { font-size: 26px; }
+.tl .t1 { flex: 11; background: #47608F; } .tl .t2 { flex: 39; background: var(--tab); }
+.tl .t3 { flex: 13; background: #7A4E9C; } .tl .t4 { flex: 23; background: var(--accent); } .tl .t5 { flex: 15; background: var(--teal); }
+.tl-labels { display: flex; font-size: 22px; color: var(--mute); margin: -22px 0 26px; }
+.tl-labels span { flex: 50; } .tl-labels span + span { text-align: left; }
+.rules { list-style: none; margin: 0; padding: 0; }
+.rules li { position: relative; padding-left: 52px; margin: 0 0 18px; font-size: 28px; line-height: 1.45; }
+.rules li::before { content: attr(data-n); position: absolute; left: 0; top: 2px; width: 38px; height: 38px; border-radius: 50%; background: var(--gold); color: var(--tab); font-weight: 800; font-size: 22px; text-align: center; line-height: 38px; }
+
+/* 말하기 틀 */
+.frames { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 0; padding: 0; list-style: none; }
+.frames li { background: var(--soft); border-radius: 12px; padding: 14px 18px; font-size: 25px; line-height: 1.4; }
+.frames li b { display: block; color: var(--accent); font-size: 22px; }
+.steps4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin: 0 0 22px; padding: 0; list-style: none; }
+.steps4 li { background: var(--tab); color: #FFFFFF; border-radius: 12px; padding: 12px 14px; font-size: 24px; line-height: 1.35; }
+.steps4 li b { display: block; color: var(--gold); font-size: 26px; }
+
+/* 토론 판 */
+.round-top { display: flex; align-items: center; gap: 24px; margin: 0 0 22px; }
+.flow-chips { display: flex; gap: 10px; margin: 0; padding: 0; list-style: none; }
+.flow-chips li { background: var(--soft); border-radius: 22px; padding: 8px 16px; font-size: 22px; white-space: nowrap; }
+.flow-chips b { color: var(--accent); }
+.rec3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.rec3 label, .rec2 label { display: flex; flex-direction: column; gap: 8px; }
+.rec3 label > span, .rec2 label > span { font-size: 26px; font-weight: 800; color: var(--tab); }
+textarea.rec { box-sizing: border-box; width: 100%; height: 340px; resize: none; padding: 14px 16px; border: 3px solid #C9CED8; border-radius: 12px; background: #FFFDF7; font-family: inherit; font-size: 24px; line-height: 1.5; color: var(--ink); }
+textarea.rec:focus { outline: none; border-color: var(--accent); }
+textarea.rec::placeholder { color: #8A909C; }
+.saved { margin: 12px 0 0; font-size: 22px; color: var(--mute); }
+
+/* 연결 지도 */
+table.compare.map td, table.compare.map th { font-size: 24px; padding: 9px 14px; line-height: 1.35; }
+
+/* 토스트 */
+.xp { display: grid; grid-template-columns: 1fr 420px; gap: 28px; align-items: start; }
+.xp svg { display: block; width: 100%; height: auto; }
+.xp p { font-size: 26px; line-height: 1.4; margin: 0 0 10px; }
+.xp input[type="range"] { width: 100%; height: 56px; }
+.xp .res { font-weight: 800; }
+.xp .good { color: var(--teal); } .xp .bad { color: var(--red); }
+.xp .concl { margin-top: 10px; padding: 12px 16px; border-radius: 12px; background: var(--soft); font-size: 25px; }
+.xp output { font-weight: 800; color: var(--accent); }
+.toast-g { transition: none; }
+
+/* 결과물 예시 카드 */
+.ex4 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+.ex4 div { border: 3px solid var(--soft); border-radius: 14px; padding: 12px 18px; }
+.ex4 h3 { margin: 0 0 6px; font-size: 26px; color: var(--accent); }
+.ex4 p { margin: 0; font-size: 24px; line-height: 1.45; }
+.subj { display: flex; flex-wrap: wrap; gap: 10px; margin: 0 0 18px; padding: 0; list-style: none; }
+.subj li { background: var(--tab); color: #FFFFFF; border-radius: 22px; padding: 6px 18px; font-size: 24px; }
+
+/* 마무리 */
+.mine { display: grid; grid-template-columns: 1fr 1fr; gap: 36px; align-items: start; }
+.mine input[type="text"] { box-sizing: border-box; width: 100%; height: 60px; padding: 0 16px; border: 3px solid #C9CED8; border-radius: 12px; font-family: inherit; font-size: 26px; }
+.mine .btns { display: flex; flex-direction: column; gap: 14px; margin-top: 22px; }
+.mine button { min-height: 64px; border-radius: 14px; border: 0; background: var(--accent); color: #FFFFFF; font-family: inherit; font-size: 26px; font-weight: 800; cursor: pointer; }
+.mine button.sub { background: var(--tab); }
+.count { list-style: none; margin: 0; padding: 0; }
+.count li { display: flex; justify-content: space-between; font-size: 26px; padding: 12px 0; border-bottom: 2px solid var(--soft); }
+.count li b { color: var(--accent); }
+.msg { min-height: 34px; margin: 14px 0 0; font-size: 24px; color: var(--teal); font-weight: 700; }
+</style>
+</head>
+<body data-theme="ppt">
+
+<section class="slide cover" id="cover" data-title="표지">
+  <div class="cv">
+    <p class="cv-k">사제 동행 독서 토론</p>
+    <h1>정재승의<br>과학 콘서트</h1>
+    <p class="cv-s">함께 읽고, 함께 묻고,<br>책 속 과학을 교과로 잇다</p>
+  </div>
+  <div class="staff" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
+</section>
+
+<section class="slide" id="flow" data-sec="열기" data-title="오늘의 흐름">
+  <h2>오늘 100분은 어떻게 흘러갈까?</h2>
+  <div class="tl" data-ai="수업 흐름">
+    <div class="t1"><b>열기</b>10분</div>
+    <div class="t2"><b>토론 5판</b>판마다 8분 · 40분</div>
+    <div class="t3"><b>교과</b>10분</div>
+    <div class="t4"><b>결과물</b>25분</div>
+    <div class="t5"><b>발표·성찰</b>15분</div>
+  </div>
+  <div class="tl-labels"><span>1교시</span><span>2교시</span></div>
+  <ul class="rules" data-ai="진행 규칙">
+    <li data-n="1">진행은 우리가 한다. 진행자가 화면을 넘기고 타이머를 누른다.</li>
+    <li data-n="2">선생님도 한 명의 독자로 같은 자리에서 이야기한다.</li>
+    <li data-n="3">말할 때는 책의 쪽수나 문장을 근거로 든다.</li>
+    <li data-n="4">기록 칸에 쓴 글은 내 기기에만 남는다. 마지막 장에서 파일로 낸다.</li>
+  </ul>
+</section>
+
+<section class="slide" id="open-feel" data-sec="열기" data-title="생각 열기: 한 줄 소감">
+  <h2>책을 덮었을 때 어떤 생각이 들었나?</h2>
+  <div class="two">
+    <div>
+      <p class="lead">활동지 1번에 쓴 소감을 <span class="key">한 줄</span>로 줄여 보내 보자.</p>
+      <p class="aside">보낸 글은 이름 없이 화면에 모인다.<br>다 모이면 비슷한 생각과 다른 생각을 찾아보자.</p>
+    </div>
+    <div class="short" data-ph="예) 일상도 과학으로 읽힌다" data-ai="생각 열기 발문">
+      <p class="ask">내 소감을 한 줄로 쓴다면?</p>
+    </div>
+  </div>
+</section>
+
+<section class="slide" id="open-poll" data-sec="열기" data-title="가장 기억에 남는 악장">
+  <h2>어느 악장이 가장 오래 남았나?</h2>
+  <div class="two">
+    <div class="poll" data-options="1악장: 케빈 베이컨, 머피의 법칙|2악장: 잭슨 폴록, 프랙털 음악|3악장: 교통 물리학, 브라질 땅콩|4악장: 소음 공명, 박수의 물리학" data-ai="투표 문항">
+      <p>하나만 고른다.</p>
+    </div>
+    <div>
+      <p class="lead">고른 악장에서<br><span class="key">한 장면</span>을 떠올려 보자.</p>
+      <p class="aside">가장 표가 많은 악장과 가장 적은 악장을 고른 사람이 먼저 이유를 말한다.</p>
+    </div>
+  </div>
+</section>
+
+<section class="slide" id="sentences" data-sec="열기" data-title="함께 이야기하고 싶은 문장">
+  <h2>함께 이야기하고 싶은 문장은?</h2>
+  <div class="two">
+    <div>
+      <p class="lead">활동지 2번의 문장 3개 가운데<br><span class="key">하나</span>를 골라 쪽수와 함께 보낸다.</p>
+      <p class="aside">모인 문장을 차례로 소리 내어 읽는다.<br>읽은 사람은 고른 이유를 30초 안에 말한다.</p>
+      <div class="timer" data-sec="300" data-label="문장 나누기"></div>
+    </div>
+    <div class="short" data-ph="예) 87쪽, 문장, 이유" data-ai="문장 나누기 발문">
+      <p class="ask">문장, 쪽수, 고른 이유 한마디</p>
+    </div>
+  </div>
+</section>
+
+<section class="slide" id="debate-how" data-sec="토론" data-title="토론하는 방법">
+  <h2>토론 한 판은 이렇게 돌아간다</h2>
+  <ol class="steps4" data-ai="토론 진행 순서">
+    <li><b>1. 질문 1분</b>발제자가 활동지 3번의 질문을 던진다</li>
+    <li><b>2. 쓰기 2분</b>모두 기록 칸에 내 생각과 근거를 쓴다</li>
+    <li><b>3. 토론 4분</b>돌아가며 말하고 서로 묻는다</li>
+    <li><b>4. 정리 1분</b>발제자가 나온 생각을 묶어 말한다</li>
+  </ol>
+  <div class="two" style="grid-template-columns: 1fr 360px">
+    <ul class="frames" data-ai="말하기 틀">
+      <li><b>내 생각</b>나는 ~라고 본다. ○쪽에서 ~ 때문이다.</li>
+      <li><b>덧붙이기</b>○번 말에 덧붙이면 ~</li>
+      <li><b>다르게 보기</b>○번과 생각이 다르다. ~라면 어떨까?</li>
+      <li><b>되묻기</b>~라는 건 어떤 뜻이야?</li>
+    </ul>
+    <div>
+      <p class="aside" style="margin:0 0 10px">발제 순서 정하기</p>
+      <div class="picker" data-range="1-5"></div>
+    </div>
+  </div>
+</section>
+
+<section class="slide" id="round-1" data-sec="토론" data-title="토론 1판">
+  <h2>토론 1판 · 발제자 1번</h2>
+  <div class="round-top">
+    <div class="timer" data-sec="480" data-label="1판"></div>
+    <ol class="flow-chips" data-ai="토론 진행 순서">
+      <li><b>1.</b> 질문 1분</li><li><b>2.</b> 쓰기 2분</li><li><b>3.</b> 토론 4분</li><li><b>4.</b> 정리 1분</li>
+    </ol>
+  </div>
+  <div class="rec3" data-ai="토론 기록 칸">
+    <label><span>발제 질문</span><textarea class="rec" data-key="r1-q" data-label="1판 발제 질문" data-no-ink placeholder="발제자가 던진 질문을 받아 적는다"></textarea></label>
+    <label><span>내 생각과 근거</span><textarea class="rec" data-key="r1-me" data-label="1판 내 생각" data-no-ink placeholder="나는 ~라고 생각한다. 책 ○쪽에서…"></textarea></label>
+    <label><span>친구 생각 중 기억할 것</span><textarea class="rec" data-key="r1-you" data-label="1판 친구 생각" data-no-ink placeholder="○번 친구는 ~라고 했다. 나는 이 점이…"></textarea></label>
+  </div>
+</section>
+
+<section class="slide" id="round-2" data-sec="토론" data-title="토론 2판">
+  <h2>토론 2판 · 발제자 2번</h2>
+  <div class="round-top">
+    <div class="timer" data-sec="480" data-label="2판"></div>
+    <ol class="flow-chips" data-ai="토론 진행 순서">
+      <li><b>1.</b> 질문 1분</li><li><b>2.</b> 쓰기 2분</li><li><b>3.</b> 토론 4분</li><li><b>4.</b> 정리 1분</li>
+    </ol>
+  </div>
+  <div class="rec3" data-ai="토론 기록 칸">
+    <label><span>발제 질문</span><textarea class="rec" data-key="r2-q" data-label="2판 발제 질문" data-no-ink placeholder="발제자가 던진 질문을 받아 적는다"></textarea></label>
+    <label><span>내 생각과 근거</span><textarea class="rec" data-key="r2-me" data-label="2판 내 생각" data-no-ink placeholder="나는 ~라고 생각한다. 책 ○쪽에서…"></textarea></label>
+    <label><span>친구 생각 중 기억할 것</span><textarea class="rec" data-key="r2-you" data-label="2판 친구 생각" data-no-ink placeholder="○번 친구는 ~라고 했다. 나는 이 점이…"></textarea></label>
+  </div>
+</section>
+
+<section class="slide" id="round-3" data-sec="토론" data-title="토론 3판">
+  <h2>토론 3판 · 발제자 3번</h2>
+  <div class="round-top">
+    <div class="timer" data-sec="480" data-label="3판"></div>
+    <ol class="flow-chips" data-ai="토론 진행 순서">
+      <li><b>1.</b> 질문 1분</li><li><b>2.</b> 쓰기 2분</li><li><b>3.</b> 토론 4분</li><li><b>4.</b> 정리 1분</li>
+    </ol>
+  </div>
+  <div class="rec3" data-ai="토론 기록 칸">
+    <label><span>발제 질문</span><textarea class="rec" data-key="r3-q" data-label="3판 발제 질문" data-no-ink placeholder="발제자가 던진 질문을 받아 적는다"></textarea></label>
+    <label><span>내 생각과 근거</span><textarea class="rec" data-key="r3-me" data-label="3판 내 생각" data-no-ink placeholder="나는 ~라고 생각한다. 책 ○쪽에서…"></textarea></label>
+    <label><span>친구 생각 중 기억할 것</span><textarea class="rec" data-key="r3-you" data-label="3판 친구 생각" data-no-ink placeholder="○번 친구는 ~라고 했다. 나는 이 점이…"></textarea></label>
+  </div>
+</section>
+
+<section class="slide" id="round-4" data-sec="토론" data-title="토론 4판">
+  <h2>토론 4판 · 발제자 4번</h2>
+  <div class="round-top">
+    <div class="timer" data-sec="480" data-label="4판"></div>
+    <ol class="flow-chips" data-ai="토론 진행 순서">
+      <li><b>1.</b> 질문 1분</li><li><b>2.</b> 쓰기 2분</li><li><b>3.</b> 토론 4분</li><li><b>4.</b> 정리 1분</li>
+    </ol>
+  </div>
+  <div class="rec3" data-ai="토론 기록 칸">
+    <label><span>발제 질문</span><textarea class="rec" data-key="r4-q" data-label="4판 발제 질문" data-no-ink placeholder="발제자가 던진 질문을 받아 적는다"></textarea></label>
+    <label><span>내 생각과 근거</span><textarea class="rec" data-key="r4-me" data-label="4판 내 생각" data-no-ink placeholder="나는 ~라고 생각한다. 책 ○쪽에서…"></textarea></label>
+    <label><span>친구 생각 중 기억할 것</span><textarea class="rec" data-key="r4-you" data-label="4판 친구 생각" data-no-ink placeholder="○번 친구는 ~라고 했다. 나는 이 점이…"></textarea></label>
+  </div>
+</section>
+
+<section class="slide" id="round-5" data-sec="토론" data-title="토론 5판">
+  <h2>토론 5판 · 발제자 5번</h2>
+  <div class="round-top">
+    <div class="timer" data-sec="480" data-label="5판"></div>
+    <ol class="flow-chips" data-ai="토론 진행 순서">
+      <li><b>1.</b> 질문 1분</li><li><b>2.</b> 쓰기 2분</li><li><b>3.</b> 토론 4분</li><li><b>4.</b> 정리 1분</li>
+    </ol>
+  </div>
+  <div class="rec3" data-ai="토론 기록 칸">
+    <label><span>발제 질문</span><textarea class="rec" data-key="r5-q" data-label="5판 발제 질문" data-no-ink placeholder="발제자가 던진 질문을 받아 적는다"></textarea></label>
+    <label><span>내 생각과 근거</span><textarea class="rec" data-key="r5-me" data-label="5판 내 생각" data-no-ink placeholder="나는 ~라고 생각한다. 책 ○쪽에서…"></textarea></label>
+    <label><span>친구 생각 중 기억할 것</span><textarea class="rec" data-key="r5-you" data-label="5판 친구 생각" data-no-ink placeholder="○번 친구는 ~라고 했다. 나는 이 점이…"></textarea></label>
+  </div>
+</section>
+
+<section class="slide part" id="part-2" data-title="2교시: 책 속 과학을 교과로">
+  <div class="cv">
+    <p class="cv-k">2교시</p>
+    <h1>책 속 과학을<br>교과로 잇다</h1>
+    <p class="cv-s">통합과학 · 과학탐구실험<br>역학과 에너지 · 물질과 에너지</p>
+  </div>
+</section>
+
+<section class="slide" id="map" data-sec="교과 잇기" data-title="책과 교과 연결 지도">
+  <h2>책의 어느 장이 어느 교과와 만날까?</h2>
+  <table class="compare map" data-ai="교과 연결 예시">
+    <thead><tr><th>책 속 장</th><th>만나는 교과</th><th>이어지는 개념</th></tr></thead>
+    <tbody>
+      <tr><th>머피의 법칙</th><td>통합과학, 역학과 에너지</td><td>자유 낙하, 회전 운동</td></tr>
+      <tr><th>교통 물리학</th><td>역학과 에너지, 물질과 에너지</td><td>속력, 상태 변화(비유)</td></tr>
+      <tr><th>크리스마스 물리학</th><td>역학과 에너지, 물질과 에너지</td><td>운동 에너지, 마찰과 열</td></tr>
+      <tr><th>브라질 땅콩 효과</th><td>과학탐구실험, 물질과 에너지</td><td>변인 통제, 알갱이의 배열</td></tr>
+      <tr><th>소음 공명, 박수의 물리학</th><td>역학과 에너지</td><td>진동, 파동, 공명</td></tr>
+      <tr><th>어리석은 통계학</th><td>과학탐구실험</td><td>자료 해석, 상관과 인과</td></tr>
+    </tbody>
+  </table>
+  <p class="aside" style="margin-top:14px">표에 없는 장도 좋다. 내가 고른 장에 맞는 개념을 찾아 잇는다.</p>
+</section>
+
+<section class="slide" id="toast" data-sec="교과 잇기" data-title="토스트는 왜 버터 면으로 떨어질까?">
+  <h2>토스트는 왜 버터 면으로 떨어질까?</h2>
+  <div class="calc xp" style="grid-template-columns: 470px 1fr" data-ai="토스트 낙하 익스플로라그램" data-let="tl = sqrt(2 * h / 9.8); tt = min(t, tl); d = 4.9 * tt ^ 2; a = 460 * tt; fa = 460 * tl; down = cos(rad(fa)) < 0; ty = 413 - h * 105 + d * 105">
+    <svg viewBox="0 0 560 440" aria-label="식탁 끝에서 떨어지며 도는 토스트">
+      <rect x="0" y="420" width="560" height="20" fill="#C9CED8"/>
+      <rect x="40" y="0" width="270" height="14" rx="4" fill="#8B5E3C" data-attr="y: 420 - h * 105"/>
+      <rect x="60" y="0" width="14" height="0" fill="#8B5E3C" data-attr="y: 420 - h * 105; height: h * 105"/>
+      <rect x="270" y="0" width="14" height="0" fill="#8B5E3C" data-attr="y: 420 - h * 105; height: h * 105"/>
+      <g data-attr="transform: 'translate(330,' + ty + ') rotate(' + a + ')'">
+        <rect x="-42" y="-8" width="84" height="16" rx="5" fill="#D9A15B" stroke="#8B5E3C" stroke-width="3"/>
+        <rect x="-36" y="-8" width="72" height="6" fill="#F7D84A"/>
+      </g>
+      <text x="20" y="40" font-size="26" fill="#5B6270">노란 면이 버터 바른 면</text>
+    </svg>
+    <div>
+      <p>식탁 높이 <output data-expr="h" data-digits="2" data-unit="m"></output></p>
+      <input type="range" name="h" min="0.5" max="3.5" step="0.05" value="0.75" aria-label="식탁 높이">
+      <p>바닥까지 <output data-expr="tl" data-digits="2" data-unit="초"></output>, 그동안 <output data-expr="fa" data-digits="0" data-unit="도"></output> 돈다</p>
+      <p style="margin-top:6px">지난 시간 <output data-expr="tt" data-digits="2" data-unit="초"></output></p>
+      <input type="range" name="t" min="0" max="0.9" step="0.01" value="0" data-play="4" aria-label="떨어지기 시작한 뒤 지난 시간">
+      <p class="res" data-show="t < tl">아직 떨어지는 중이다.</p>
+      <p class="res bad" data-show="t >= tl && down">버터 면이 아래로 닿았다.</p>
+      <p class="res good" data-show="t >= tl && !down">버터 면이 위로 닿았다.</p>
+      <p class="aside" data-ai="모형 수치">회전 빠르기 1초에 460도 (모형)</p>
+    </div>
+  </div>
+  <p class="step concl" data-ai="모형 수치">보통 식탁(약 0.75 m)에서는 반 바퀴 돌 시간밖에 없다.<br>한 바퀴를 다 돌려면 식탁이 3 m쯤 되어야 한다(모형).</p>
+</section>
+
+<section class="slide" id="traffic" data-sec="교과 잇기" data-title="차가 많을수록 더 많이 흐를까?">
+  <h2>차가 많을수록 도로는 더 많이 흘려보낼까?</h2>
+  <div class="calc xp" data-ai="교통 흐름 익스플로라그램" data-let="v = 100 * (1 - k / 150); q = k * v; gap = 1000 / k">
+    <div>
+      <svg viewBox="0 0 560 100" aria-label="도로 150 m 구간의 차 간격">
+        <defs><clipPath id="road-clip"><rect x="0" y="0" width="560" height="100"/></clipPath></defs>
+        <rect x="0" y="20" width="560" height="60" fill="#3A3F4A"/>
+        <line x1="0" y1="50" x2="560" y2="50" stroke="#E9B949" stroke-width="3" stroke-dasharray="18 14"/>
+        <g clip-path="url(#road-clip)">
+          <rect class="car" y="38" width="17" height="24" rx="5" data-attr="x: 8 + 0 * gap * 3.73; fill: k > 75 ? '#B3261E' : '#1E6F5C'"/>
+          <rect class="car" y="38" width="17" height="24" rx="5" data-attr="x: 8 + 1 * gap * 3.73; fill: k > 75 ? '#B3261E' : '#1E6F5C'"/>
+          <rect class="car" y="38" width="17" height="24" rx="5" data-attr="x: 8 + 2 * gap * 3.73; fill: k > 75 ? '#B3261E' : '#1E6F5C'"/>
+          <rect class="car" y="38" width="17" height="24" rx="5" data-attr="x: 8 + 3 * gap * 3.73; fill: k > 75 ? '#B3261E' : '#1E6F5C'"/>
+          <rect class="car" y="38" width="17" height="24" rx="5" data-attr="x: 8 + 4 * gap * 3.73; fill: k > 75 ? '#B3261E' : '#1E6F5C'"/>
+          <rect class="car" y="38" width="17" height="24" rx="5" data-attr="x: 8 + 5 * gap * 3.73; fill: k > 75 ? '#B3261E' : '#1E6F5C'"/>
+          <rect class="car" y="38" width="17" height="24" rx="5" data-attr="x: 8 + 6 * gap * 3.73; fill: k > 75 ? '#B3261E' : '#1E6F5C'"/>
+          <rect class="car" y="38" width="17" height="24" rx="5" data-attr="x: 8 + 7 * gap * 3.73; fill: k > 75 ? '#B3261E' : '#1E6F5C'"/>
+          <rect class="car" y="38" width="17" height="24" rx="5" data-attr="x: 8 + 8 * gap * 3.73; fill: k > 75 ? '#B3261E' : '#1E6F5C'"/>
+          <rect class="car" y="38" width="17" height="24" rx="5" data-attr="x: 8 + 9 * gap * 3.73; fill: k > 75 ? '#B3261E' : '#1E6F5C'"/>
+          <rect class="car" y="38" width="17" height="24" rx="5" data-attr="x: 8 + 10 * gap * 3.73; fill: k > 75 ? '#B3261E' : '#1E6F5C'"/>
+          <rect class="car" y="38" width="17" height="24" rx="5" data-attr="x: 8 + 11 * gap * 3.73; fill: k > 75 ? '#B3261E' : '#1E6F5C'"/>
+          <rect class="car" y="38" width="17" height="24" rx="5" data-attr="x: 8 + 12 * gap * 3.73; fill: k > 75 ? '#B3261E' : '#1E6F5C'"/>
+          <rect class="car" y="38" width="17" height="24" rx="5" data-attr="x: 8 + 13 * gap * 3.73; fill: k > 75 ? '#B3261E' : '#1E6F5C'"/>
+          <rect class="car" y="38" width="17" height="24" rx="5" data-attr="x: 8 + 14 * gap * 3.73; fill: k > 75 ? '#B3261E' : '#1E6F5C'"/>
+          <rect class="car" y="38" width="17" height="24" rx="5" data-attr="x: 8 + 15 * gap * 3.73; fill: k > 75 ? '#B3261E' : '#1E6F5C'"/>
+          <rect class="car" y="38" width="17" height="24" rx="5" data-attr="x: 8 + 16 * gap * 3.73; fill: k > 75 ? '#B3261E' : '#1E6F5C'"/>
+          <rect class="car" y="38" width="17" height="24" rx="5" data-attr="x: 8 + 17 * gap * 3.73; fill: k > 75 ? '#B3261E' : '#1E6F5C'"/>
+          <rect class="car" y="38" width="17" height="24" rx="5" data-attr="x: 8 + 18 * gap * 3.73; fill: k > 75 ? '#B3261E' : '#1E6F5C'"/>
+          <rect class="car" y="38" width="17" height="24" rx="5" data-attr="x: 8 + 19 * gap * 3.73; fill: k > 75 ? '#B3261E' : '#1E6F5C'"/>
+          <rect class="car" y="38" width="17" height="24" rx="5" data-attr="x: 8 + 20 * gap * 3.73; fill: k > 75 ? '#B3261E' : '#1E6F5C'"/>
+          <rect class="car" y="38" width="17" height="24" rx="5" data-attr="x: 8 + 21 * gap * 3.73; fill: k > 75 ? '#B3261E' : '#1E6F5C'"/>
+          <rect class="car" y="38" width="17" height="24" rx="5" data-attr="x: 8 + 22 * gap * 3.73; fill: k > 75 ? '#B3261E' : '#1E6F5C'"/>
+          <rect class="car" y="38" width="17" height="24" rx="5" data-attr="x: 8 + 23 * gap * 3.73; fill: k > 75 ? '#B3261E' : '#1E6F5C'"/>
+        </g>
+      </svg>
+      <p class="aside" style="margin:4px 0 6px">도로 150 m 구간</p>
+      <figure class="plot" data-x="0, 150" data-y="0, 4000" data-xstep="30" data-ystep="1000" data-comma data-height="250" data-xlabel="밀도(대/km)" data-ylabel="교통량(대/시간)">
+        <i data-line="100 * x * (1 - x / 150)" data-color="#1E2B4F"></i>
+        <i data-point="k, q" data-label="지금"></i>
+      </figure>
+    </div>
+    <div>
+      <p>밀도 <output data-expr="k" data-unit="대/km"></output></p>
+      <input type="range" name="k" min="5" max="145" step="5" value="20" aria-label="도로 1 km에 있는 차의 수">
+      <p>속력 <output data-expr="v" data-digits="0" data-unit="km/h"></output></p>
+      <p>교통량 <output data-expr="q" data-digits="0" data-comma data-unit="대/시간"></output></p>
+      <p>차 사이 간격 <output data-expr="gap" data-digits="1" data-unit="m"></output></p>
+      <p class="res good" data-show="k < 50">자유 흐름: 기체 분자처럼 저마다 빠르게 달린다(비유).</p>
+      <p class="res" data-show="k >= 50 && k <= 100">교통량이 가장 많은 구간이다. 빽빽해지기 시작한다.</p>
+      <p class="res bad" data-show="k > 100">정체: 고체처럼 촘촘히 붙어 거의 못 움직인다(비유).</p>
+      <p class="aside" data-ai="모형 수치">최고 속력 100 km/h, 꽉 막힌 밀도 150대/km (모형)</p>
+    </div>
+  </div>
+</section>
+
+<section class="slide" id="product-guide" data-sec="결과물" data-title="결과물 만들기 안내">
+  <h2>내 결과물은 이렇게 만든다</h2>
+  <ul class="subj"><li>통합과학</li><li>과학탐구실험</li><li>역학과 에너지</li><li>물질과 에너지</li></ul>
+  <div class="ex4" data-ai="결과물 예시">
+    <div><h3>1. 책 속 장면</h3><p>머피의 법칙: 식탁에서 떨어진 토스트는 버터 면이 바닥에 닿는다.</p></div>
+    <div><h3>2. 만나는 교과와 개념</h3><p>통합과학, 역학과 에너지<br>자유 낙하, 회전 운동</p></div>
+    <div><h3>3. 과학으로 설명하기</h3><p>0.75 m에서 떨어지는 데 약 0.39초가 걸린다. 그동안 반 바퀴쯤 돈다.</p></div>
+    <div><h3>4. 직접 해 볼 탐구</h3><p>떨어뜨리는 높이를 바꾸고 카드가 뒤집혀 닿는 비율을 잰다. 카드 크기와 미는 힘은 같게 둔다.</p></div>
+  </div>
+  <div class="timer" data-sec="1500" data-label="결과물 만들기" style="margin-top:16px"></div>
+</section>
+
+<section class="slide" id="product-a" data-sec="결과물" data-title="결과물 1: 장면과 개념">
+  <h2>결과물 1 · 책 속 장면을 과학으로</h2>
+  <div class="rec3" data-activity data-ai="결과물 기록 칸">
+    <label><span>1. 책 속 장면</span><textarea class="rec" data-key="p-scene" data-label="책 속 장면" data-no-ink placeholder="장 이름, 쪽수, 어떤 장면인지"></textarea></label>
+    <label><span>2. 만나는 교과와 개념</span><textarea class="rec" data-key="p-subj" data-label="만나는 교과와 개념" data-no-ink placeholder="교과 이름과 개념 이름. 교과서 몇 단원인지도"></textarea></label>
+    <label><span>3. 과학으로 설명하기</span><textarea class="rec" data-key="p-why" data-label="과학으로 설명하기" data-no-ink placeholder="개념으로 장면을 설명한다. 식이나 그래프를 써도 좋다"></textarea></label>
+  </div>
+  <p class="saved">쓰는 대로 이 기기에 저장된다.</p>
+</section>
+
+<section class="slide" id="product-b" data-sec="결과물" data-title="결과물 2: 탐구 설계">
+  <h2>결과물 2 · 직접 해 볼 탐구 설계</h2>
+  <div class="rec3" data-activity data-ai="결과물 기록 칸">
+    <label><span>4. 탐구 질문과 가설</span><textarea class="rec" data-key="p-q" data-label="탐구 질문과 가설" data-no-ink placeholder="~하면 ~할까? 나는 ~일 것이라고 예상한다"></textarea></label>
+    <label><span>5. 바꿀 것과 같게 둘 것</span><textarea class="rec" data-key="p-var" data-label="바꿀 변인과 같게 둘 변인" data-no-ink placeholder="바꿀 변인 하나, 같게 둘 변인 여러 개"></textarea></label>
+    <label><span>6. 방법과 더 궁금한 점</span><textarea class="rec" data-key="p-how" data-label="방법과 더 궁금한 점" data-no-ink placeholder="무엇으로, 몇 번 잴지. 해 보면 더 알고 싶은 것"></textarea></label>
+  </div>
+  <p class="saved">쓰는 대로 이 기기에 저장된다.</p>
+</section>
+
+<section class="slide" id="share" data-sec="발표" data-title="결과물 발표">
+  <h2>내 결과물을 2분 동안 소개한다</h2>
+  <div class="two" style="grid-template-columns: 1fr 520px">
+    <div>
+      <p class="lead">장면 → 개념 → 탐구 순서로 말한다.<br>듣는 사람은 <span class="key">더 궁금한 점</span>을 하나 보낸다.</p>
+      <div class="picker" data-range="1-5"></div>
+      <div class="timer" data-sec="120" data-label="발표" style="margin-top:16px"></div>
+    </div>
+    <div class="short" data-ph="예) 공기 저항은?" data-ai="발표 듣기 발문">
+      <p class="ask">친구 결과물에서 더 궁금해진 점</p>
+    </div>
+  </div>
+</section>
+
+<section class="slide" id="reflect" data-sec="성찰" data-title="성찰 한 줄">
+  <h2>오늘 내 생각은 어디서 달라졌나?</h2>
+  <div class="two">
+    <div>
+      <p class="lead">토론이나 결과물을 만들며<br><span class="key">생각이 바뀐 순간</span>을 하나 쓴다.</p>
+      <p class="aside">책 제목처럼, 복잡한 세상을 과학으로 읽은 순간이면 더 좋다.</p>
+    </div>
+    <div class="short" data-ph="예) ○번 말을 듣고 ~" data-ai="성찰 발문">
+      <p class="ask">생각이 바뀐 순간 한 줄</p>
+    </div>
+  </div>
+</section>
+
+<section class="slide" id="mine" data-sec="성찰" data-title="내 기록 내기">
+  <h2>내 기록을 파일로 낸다</h2>
+  <div class="mine" data-ai="기록 내려받기">
+    <div>
+      <label class="aside" for="who">번호 또는 이름</label>
+      <input type="text" id="who" class="who" data-no-ink autocomplete="off" placeholder="예) 3번">
+      <div class="btns">
+        <button type="button" id="dl" data-tap>내 기록 파일로 내려받기</button>
+        <button type="button" id="cp" class="sub" data-tap>글로 복사하기</button>
+      </div>
+      <p class="msg" id="mine-msg" aria-live="polite"></p>
+    </div>
+    <div>
+      <p class="aside" style="margin:0 0 6px">지금까지 쓴 칸</p>
+      <ul class="count" id="count">
+        <li><span>토론 기록</span><b id="c-r">0 / 15칸</b></li>
+        <li><span>결과물</span><b id="c-p">0 / 6칸</b></li>
+      </ul>
+      <p class="aside" style="margin-top:16px">내려받은 파일을 수업방에 올린다.<br>빈 칸이 있으면 앞 장으로 돌아가 채운다.</p>
+    </div>
+  </div>
+</section>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const deck = document.documentElement.dataset.deck || 'deck';
+  const pre = 'rdc-' + deck + '-';
+  const get = (k) => { try { return localStorage.getItem(pre + k) || ''; } catch (e) { return ''; } };
+  const put = (k, v) => { try { localStorage.setItem(pre + k, v); } catch (e) { /* 저장 못 해도 화면에는 남는다 */ } };
+  const boxes = Array.from(document.querySelectorAll('textarea.rec'));
+  const who = document.getElementById('who');
+  boxes.forEach((b) => { b.value = get(b.dataset.key); b.addEventListener('input', () => { put(b.dataset.key, b.value); count(); }); });
+  if (who) { who.value = get('who'); who.addEventListener('input', () => put('who', who.value)); }
+
+  function count() {
+    const r = boxes.filter((b) => b.dataset.key[0] === 'r' && b.value.trim()).length;
+    const p = boxes.filter((b) => b.dataset.key[0] === 'p' && b.value.trim()).length;
+    document.getElementById('c-r').textContent = r + ' / 15칸';
+    document.getElementById('c-p').textContent = p + ' / 6칸';
+  }
+  function text() {
+    const lines = ['정재승의 과학 콘서트 · 사제 동행 독서 토론 기록', '작성: ' + (who && who.value.trim() ? who.value.trim() : '(번호 없음)'), ''];
+    lines.push('[토론 기록]');
+    for (let n = 1; n <= 5; n++) {
+      lines.push('', '■ ' + n + '판');
+      boxes.filter((b) => b.dataset.key.indexOf('r' + n + '-') === 0).forEach((b) => lines.push('- ' + b.dataset.label + ': ' + (b.value.trim() || '(비어 있음)')));
+    }
+    lines.push('', '[교과 적용 결과물]');
+    boxes.filter((b) => b.dataset.key[0] === 'p').forEach((b) => lines.push('', '■ ' + b.dataset.label, b.value.trim() || '(비어 있음)'));
+    return lines.join('\n');
+  }
+  const say = (s) => { const m = document.getElementById('mine-msg'); if (m) m.textContent = s; };
+  document.getElementById('dl').addEventListener('click', () => {
+    try {
+      const blob = new Blob(['﻿' + text()], { type: 'text/plain;charset=utf-8' });
+      const a = document.createElement('a');
+      const name = (who && who.value.trim() ? who.value.trim().replace(/[\\/:*?"<>|\s]+/g, '_') + '-' : '') + '과학콘서트-토론기록.txt';
+      a.href = URL.createObjectURL(blob); a.download = name;
+      document.body.append(a); a.click(); a.remove();
+      setTimeout(() => URL.revokeObjectURL(a.href), 4000);
+      say('내려받았다. 파일을 수업방에 올리자.');
+    } catch (e) { say('내려받지 못했다. 「글로 복사하기」를 눌러 붙여 넣자.'); }
+  });
+  document.getElementById('cp').addEventListener('click', async () => {
+    try { await navigator.clipboard.writeText(text()); say('복사했다. 수업방 글쓰기 칸에 붙여 넣자.'); }
+    catch (e) { say('복사하지 못했다. 「내 기록 파일로 내려받기」를 눌러 보자.'); }
+  });
+  count();
+});
+</script>
+</body>
+</html>
